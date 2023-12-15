@@ -1,0 +1,44 @@
+[
+  {
+    "id": "18",
+    "name": "扫码验真",
+    "type": "scan",
+    "del": "0",
+    "bgColor": "#F7FFFF",
+    "icon": "/es/hehua/img/481918AA70D34F0D8BC6DD2C30DF19F6.png",
+    "activeIcon": "/es/hehua/img/3A2B1CD4E08D406A857C074D9D179A62.png",
+    "menuHost": null,
+    "menuUri": "/yx/views/common/yz.html?time=1624331549000",
+    "idx": "1",
+    "orgId": "hebeihehua",
+    "status": "1"
+  },
+  {
+    "id": "21",
+    "name": "积分商城",
+    "type": "shop",
+    "del": "1",
+    "bgColor": "#F7FFFF",
+    "icon": "/es/hehua/img/76E7F278C8854198A10302F8B69D4D9B.png",
+    "activeIcon": "/es/hehua/img/5C9EE13F95A243BFA4E1863B9E381655.png",
+    "menuHost": null,
+    "menuUri": "/scoremall/index.html?time=1624331549000",
+    "idx": "2",
+    "orgId": "hebeihehua",
+    "status": "1"
+  },
+  {
+    "id": "20",
+    "name": "个人中心",
+    "type": "mycenter",
+    "del": "0",
+    "bgColor": "#F7FFFF",
+    "icon": "/es/hehua/img/6D3DD50AAB4A4999A8374EDBBAE4D5F9.png",
+    "activeIcon": "/es/hehua/img/DF642275CDDC41D799B2757EA62220A3.png",
+    "menuHost": null,
+    "menuUri": "/yx/views/general/hh-personal.html?time=1624331549000",
+    "idx": "4",
+    "orgId": "hebeihehua",
+    "status": "1"
+  }
+]

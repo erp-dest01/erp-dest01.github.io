@@ -1,0 +1,10 @@
+{
+  "code": "200",
+  "msg": null,
+  "data": {
+    "firstScanName": "佚名",
+    "firstScanTime": "2020-01-15 15:09",
+    "scanCount": 1,
+    "hisList": []
+  }
+}

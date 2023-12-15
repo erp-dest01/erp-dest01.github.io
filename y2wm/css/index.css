@@ -1,0 +1,124 @@
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  margin: 0;
+  font-family: 'BlinkMacSystemFont', 'Helvetica Neue', 'Helvetica', 'Segoe UI', 'Arial',
+    'Roboto', 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+}
+a {
+  text-decoration: none;
+}
+button,
+input,
+textarea {
+  color: inherit;
+  font: inherit;
+}
+[class*='van-']:focus,
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 0;
+}
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.van-step {
+  position: relative;
+  -webkit-flex: 1;
+  flex: 1;
+  color: #969799;
+  font-size: 14px;
+  -webkit-box-flex: 1;
+}
+.van-step-circle {
+  display: block;
+  width: 5px;
+  height: 5px;
+  background-color: #969799;
+  border-radius: 50%;
+}
+.van-step-line {
+  position: absolute;
+  background-color: #ebedf0;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.van-step--vertical {
+  display: block;
+  float: none;
+  padding: 10px 10px 10px 0;
+  line-height: 18px;
+}
+.van-step--vertical:not(:last-child)::after {
+  border-bottom-width: 1px;
+}
+.van-step--vertical .van-step-circle-container {
+  position: absolute;
+  top: 19px;
+  left: -15px;
+  z-index: 1;
+  font-size: 12px;
+  line-height: 1;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.van-step--vertical .van-step-line {
+  top: 16px;
+  left: -15px;
+  width: 1px;
+  height: 100%;
+}
+.van-step:last-child .van-step-line {
+  width: 0;
+}
+.van-step--finish {
+  color: #323233;
+}
+.van-step--finish .van-step-circle,
+.van-step--finish .van-step-line {
+  background-color: #07c160;
+}
+.van-step-icon,
+.van-step-title {
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+.van-step-icon--active,
+.van-step-icon--finish,
+.van-step-title--active,
+.van-step-title--finish {
+  color: #07c160;
+}
+
+.van-steps {
+  overflow: hidden;
+  background-color: #fff;
+}
+.van-steps--vertical {
+  padding: 0 0 0 32px;
+}
+.van-icon {
+  position: relative;
+  display: inline-block;
+  font: normal normal normal 14px/1;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+.van-icon:before {
+  position: relative;
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  background: #0089ff;
+  background: #ff8923;
+  transform: rotate(45deg);
+  content: '';
+}

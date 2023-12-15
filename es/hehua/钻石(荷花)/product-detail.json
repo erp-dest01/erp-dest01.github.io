@@ -1,0 +1,32 @@
+{
+  "code": "200",
+  "msg": null,
+  "data": {
+    "productCode": 54,
+    "sn": "1111111111133",
+    "grade": 1,
+    "gradeName": null,
+    "gradeLevel": "103",
+    "gradeLevelName": null,
+    "price": 32.0,
+    "itemPrice": null,
+    "typeCode": 1,
+    "typeName": "烤烟型",
+    "spec": 20,
+    "oil": 10.0,
+    "nicotine": 1.0,
+    "carbonMonoxide": 10.0,
+    "length": 84,
+    "filterLength": null,
+    "pack": 1,
+    "packName": null,
+    "num": 20,
+    "creator": null,
+    "modifier": null,
+    "orgId": "hebeihehua",
+    "status": 1,
+    "ctime": null,
+    "utime": null,
+    "id": 47
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "actPopTips": {
+    "id": 90,
+    "orgId": "hebeihehua",
+    "propKey": "act_pop_tips",
+    "propValue": "1",
+    "status": 1
+  },
+  "scanCodePage": {
+    "id": 19,
+    "flag": 2,
+    "type": "SCMB-002",
+    "icon": null,
+    "name": "荷花硬盒扫码落地页",
+    "note": "",
+    "conf": "{\"loading\":{\"flag\":1,\"bg\":\"https://qoss.qrmkt.cn/saas_platform/release/031D21DAA24442CB9C7BC090C3178B99.png\",\"color\":\"#AB784C\"},\"has\":{\"title\":{\"name\":\"荷花\",\"note\":\"\"},\"yz\":{\"botFlag\":1,\"botImg\":\"https://qoss.qrmkt.cn/saas_platform/release/A70A129915BD4D40988A9A92CFC04ED5.jpg\",\"detailFlag\":true,\"color\":\"#AB784C\",\"productImgBig\":\"\",\"productImg\":\"/es/hehua/img/钻石(荷花).jpg\",\"note\":\"本页面产品信息，未满十八周岁请勿访问\",\"feedbackFlag\":1,\"feedbackImg\":\"https://qoss.qrmkt.cn/saas_platform/release/F42415D3E0FA4958A2ACB0FFDA515349.png\"}}}",
+    "pubUrl": "/saas_platform/release/tplconf/B0809F948D3448A09945A1FA8BE39479.json",
+    "preUrl": "/saas_platform/release/tplconf/B0809F948D3448A09945A1FA8BE39479.json",
+    "orgId": "hebeihehua",
+    "sn": "1111111111133,",
+    "status": 1,
+    "creator": "hehua_liusha",
+    "modifier": "hehua_caozhengli"
+  }
+}

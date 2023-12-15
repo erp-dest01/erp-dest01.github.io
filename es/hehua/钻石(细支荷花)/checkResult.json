@@ -1,0 +1,31 @@
+{
+  "code": "200",
+  "msg": null,
+  "data": {
+    "product": {
+      "productCode": 56,
+      "prodName": "细支荷花",
+      "name": "钻石（细支荷花）",
+      "sn": "1111111111135",
+      "type": "prod1",
+      "unitType": 1,
+      "brandCode": "BRAND-7D41JAAAAB",
+      "brandName": "荷花",
+      "orgId": "hebeihehua",
+      "smallPic": "/es/hehua/img/钻石(细支荷花).png",
+      "bigPic": "/es/hehua/img/钻石(细支荷花).png",
+      "allName": "钻石（细支荷花）盒",
+      "productName": "钻石(细支荷花)",
+      "status": "1",
+      "creator": null,
+      "modifier": null,
+      "ean": null
+    },
+    "orgName": "河北中烟工业有限责任公司",
+    "unusualBatch": 0,
+    "firstScanTime": "2020-01-15 15:09",
+    "isMaxScanNum": false,
+    "scanCount": 1,
+    "checkResult": 1
+  }
+}
