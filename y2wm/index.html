@@ -410,7 +410,6 @@
   }
 
   function jumpToOther() {
-    NProgress.start()
     const scanType = checkBrowser()
     let config = null
     if (res && res.routeConfig && res.routeConfig[scanType]) {
@@ -421,7 +420,11 @@
       return;
     }
     if (config.linkUrl) {
-      window.location.replace(config.linkUrl)
+      NProgress.start()
+      setTimeout(function () {
+        window.location.replace(config.linkUrl)
+      }, 1000)
+
     }
   }
 
