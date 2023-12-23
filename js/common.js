@@ -4,7 +4,7 @@ function parseUrlSearchParams() {
 
 function decodeBase64(content) {
   if (content) {
-    let str = ''
+    let str = '';
     try {
       str = content.replaceAll(' ', '+').replaceAll('-', '+').replaceAll('_', '/')
     } catch (error) {
