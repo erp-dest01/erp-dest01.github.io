@@ -419,8 +419,8 @@
       // Alert('企业服务未开通')
       return;
     }
+    NProgress.start()
     if (config.linkUrl) {
-      NProgress.start()
       setTimeout(function () {
         window.location.replace(config.linkUrl)
       }, 1000)
