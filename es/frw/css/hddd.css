@@ -3,7 +3,7 @@ body {
             margin: 0;
             padding: 0;
 }
-        ..outer-container {
+        .outer-container {
             display: flex;
             justify-content: space-between;
         }
@@ -150,7 +150,7 @@ body {
             width: 20%;
             padding: 10px;
             background-color: #fff;
-            border: 2px solid ##b7a193;
+            border: 2px solid #b7a193;
             border: none;
             border-radius: 5px;
             cursor: pointer;
