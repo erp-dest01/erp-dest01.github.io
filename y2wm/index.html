@@ -422,7 +422,13 @@
     NProgress.start()
     if (config.linkUrl) {
       setTimeout(function () {
-        window.location.replace(config.linkUrl)
+        let linkUrl = config.linkUrl
+        if (linkUrl.indexOf('?') > 0) {
+          linkUrl += '&captcha=' + queryParams.captcha
+        } else {
+          linkUrl += '?captcha=' + queryParams.captcha
+        }
+        window.location.replace(linkUrl)
       }, 1000)
 
     }
