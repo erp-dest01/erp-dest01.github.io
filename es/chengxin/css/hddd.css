@@ -1,0 +1,306 @@
+body {
+            background-color: #f6f6f6;
+            margin: 0;
+            padding: 0;
+}
+        .outer-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .background-container {
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            min-height: 130vh;
+            position: relative;
+        }
+
+        .button1 {
+    position: absolute;
+    width: 50%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b7a193;
+    color: #fff;
+    text-decoration: none;
+    opacity: 0;
+}
+.button2 {
+    position: absolute;
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b7a193;
+    color: #fff;
+    text-decoration: none;
+    opacity: 0;
+    }
+.button1 {
+    top: 1vh; /* Adjust the top position for Button 1 */
+}
+
+.button2 {
+    top: 30vh; /* Adjust the top position for Button 2 */
+}
+
+.button3 {
+    top: 70vh; /* Adjust the top position for Button 3 */
+    opacity: 0;
+}
+     .image-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 260%;
+}
+.image-container img {
+    display: block;
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    margin: 5px 0;
+}
+    .outer-table {
+    width: 100%;
+    border-collapse: collapse;
+    height: 80px;  /* 根据需要调整高度 */
+    overflow: hidden;
+    position: fixed;  /* 定位至页面底部 */
+    bottom: 0;  /* 从底部开始的位置 */
+    left: 0;
+    background-color: white;
+    border-top-left-radius: 20px;  /* 左上角圆角 */
+    border-top-right-radius: 20px;  /* 右上角圆角 */
+}
+.inner-table {
+    width: 33.33%;  /* 平分宽度 */
+    float: left;  /* 使其并排显示 */
+    border-collapse: collapse;
+}
+.inner-table a {
+    display: inline-block;
+    width: 33.33%;
+}
+.inner-table td {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+    height: 100%;            /* 设置高度为100%以确保图片在其内垂直居中 */
+}
+
+.inner-table  img {
+    width: 70%;
+    height: auto;
+    max-width: 100%; /* 让图片不超过单元格宽度 */
+    margin-left: 60px;
+}
+.popup {
+    display: none;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            border-top-left-radius: 15px; /* Adjust the value as needed */
+            border-top-right-radius: 15px; /* Adjust the value as needed */
+            box-sizing: border-box;
+            position: fixed;
+            bottom: 0;
+            padding: 20px 0px 0px 0px;
+            height: 50%;
+            z-index: 1001;
+        }
+
+        .input-group {
+            display: flex;
+    justify-content: space-between;
+            margin-top: 15px;
+            font-size: 12px;
+            position: relative;
+            margin-right: 10px;
+        }
+.input-group label {
+    margin-right: 20px; /* 设置 label 右侧的间距为 10px，可以根据需要调整 */
+}
+        label {
+                font-weight: normal;
+    text-align: left;
+    margin-top: 21px;
+    margin-left: 20px;
+    font-size: 15px;
+        }
+
+        input {
+            width: 40%;
+            height: auto;
+            padding: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: none;
+            margin-top: 18px;
+            font-size: 12px;
+            outline: none;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        button {
+            width: 20%;
+            padding: 10px;
+            background-color: #fff;
+            border: 2px solid #b7a193;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: auto;
+            border-radius: 20px;
+            color: #b7a193;
+        }
+        .input-group .a {
+    border: 2px solid #b7a193; /* 添加边框，并设置颜色 */
+    border-radius: 20px; /* 可以根据需要调整边框圆角的大小 */
+    background-color: #fff;
+    color: #b7a193; /* 设置按钮文字颜色 */
+    cursor: pointer;
+    margin-left: auto;
+    width: 95px;
+    margin-right: 20px;
+}
+        .login-btn {
+            background-color: #bca38e;
+            color: #fff;
+            width: 95px;
+            margin-right: 20px;
+            height: 38px;
+            margin-top: 8px;
+        }
+        .input-group input {
+    font-size: 15px; /* 设置输入框内文本的字体大小，可以根据需要调整 */
+}
+
+        .agreement {
+            margin-top: 50px;
+        }
+
+        p  {
+    font-weight: normal;
+    text-align: left;
+    margin-top: 10px;
+    margin-left: 20px;
+    color: #b1b1b1;
+}
+
+        a {
+            color: #2196f3;
+            text-decoration: none;
+        }
+        .left-align {
+    text-align: left;
+}
+h2.left-align::before {
+    content: "";
+    display: inline-block;
+    width: 3px; /* 调整方块的宽度 */
+    height: 20px; /* 调整方块的高度 */
+    background-color: #baa07f; /* 方块的背景颜色 */
+    margin-right: 10px; /* 可以根据需要调整方块与文本之间的距离 */
+}
+.agreement p {
+    display: flex;
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+}
+
+.agreement span {
+    font-weight: bold;
+    margin-right: 5px; /* 可以根据需要调整文本与链接之间的距离 */
+}
+
+.agreement a {
+    color: #2196f3;
+    text-decoration: none;
+}
+.agreement span {
+    position: relative;
+    padding-left: 1.5em;
+    cursor: pointer;
+}
+
+.agreement span::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -2%;
+    transform: translateY(-50%);
+    width: 1.2em;
+    height: 1.2em;
+    border: 1px solid #b7a193;
+    border-radius: 50%;
+}
+
+.agreement span::after {
+    content: '\2713';
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translate(-50%, -50%);
+    font-size: 1em;
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 1; /* 添加这一行 */
+}
+
+.agreement span.clicked::before {
+    background-color: #b7a193;
+    border: none;
+}
+
+.agreement span.clicked::after {
+    opacity: 1;
+}
+.error-message {
+    position: absolute;
+    color: #dc7473;
+    font-size: 12px;
+    bottom: -10px; /* 调整垂直位置，可以根据需要调整 */
+    left: 25%; /* 将左边缘与父容器中央对齐 */
+    transform: translateX(-50%); /* 水平居中 */
+}
+
+        .input-group.a {
+            margin-top: 15px; /* Adjust the margin-top value as needed */
+        }
+        #overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1000; /* 设置蒙层的层级，确保高于页面内容 */
+}
+.info-popup {
+    display: none;
+        align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1b1919;
+    border: 1px solid #1b1919;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 180px;
+    height: 40px;
+    text-align: center;
+    border-radius: 5px;
+    z-index: 1001;
+  }
+  .info-popup .p {
+    text-align: center;
+     }

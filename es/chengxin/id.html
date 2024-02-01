@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html><head>
+    <title>橙杏服务</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="首页">
+    <meta name="description" content="首页">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.staticfile.org/jquery/3.6.4/jquery.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="./js/common.js"></script>
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+        }
+        .image-container {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            top: 260%;
+        }
+        .image-container img {
+            display: block;
+            margin: 0 auto;
+            width: 50px;
+            height: 50px;
+            margin: 5px 0;
+        }
+        .outer-table {
+            width: 100%;
+            border-collapse: collapse;
+            height: 80px;  /* 根据需要调整高度 */
+            overflow: hidden;
+            position: fixed;  /* 定位至页面底部 */
+            bottom: 0;  /* 从底部开始的位置 */
+            left: 0;
+            background-color: white;
+            border-top-left-radius: 20px;  /* 左上角圆角 */
+            border-top-right-radius: 20px;  /* 右上角圆角 */
+        }
+        .inner-table {
+            width: 33.33%;  /* 平分宽度 */
+            float: left;  /* 使其并排显示 */
+            border-collapse: collapse;
+        }
+        .inner-table a {
+            display: inline-block;
+            width: 33.33%;
+        }
+        .inner-table td {
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center;     /* 垂直居中 */
+            height: 100%;            /* 设置高度为100%以确保图片在其内垂直居中 */
+        }
+
+        .inner-table  img {
+            width: 70%;
+            height: auto;
+            max-width: 100%; /* 让图片不超过单元格宽度 */
+            margin-left: 60px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="index">
+    <dd>此码为产品正确编码</dd>
+    <p>首次验证成功</p>
+    <div class="nava">
+        <a href="index2.html">产品详情</a>
+        <a href="index2.html">扫码详情</a>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="image-container">
+        <a href="mrqd.html">
+            <img src="./img/04.jpg">
+        </a>
+        <a href="zxkf.html">
+            <img src="./img/05.jpg" border="0">
+        </a>
+        <img src="./img/06.jpg" alt="Image 3">
+    </div>
+</div>
+<table class="outer-table">
+    <tbody><tr>
+        <td>
+            <a href="sy.html">
+                <table class="inner-table">
+                    <tbody><tr>
+                        <td>
+                            <img src="./img/sy.jpg" alt="Image Description 1">
+                        </td>
+                    </tr>
+                    </tbody></table>
+            </a>
+        </td>
+        <td>
+            <a href="hddd.html">
+                <table class="inner-table">
+                    <tbody><tr>
+                        <td>
+                            <img src="./img/hd.jpg" alt="Image Description 2">
+                        </td>
+                    </tr>
+                    </tbody></table>
+            </a>
+        </td>
+        <td>
+            <a href="index88.html">
+                <table class="inner-table">
+                    <tbody><tr>
+                        <td>
+                            <img src="./img/wd.jpg" alt="Image Description 3">
+                        </td>
+                    </tr>
+                    </tbody></table>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<script>
+    $(function (){
+        let esp = JSON.parse(decodeBase64(parseUrlSearchParams().esp))
+        $('body').css('background-image', 'url("img/' + esp.product + '-background.jpg")')
+    })
+</script>
+</html>
