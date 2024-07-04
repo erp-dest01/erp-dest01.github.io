@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="width=device-width,initial-scale=1,user-scalable=no" name="viewport" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="format-detection" content="telephone=no,address=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title></title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" type="text/css" href="./css//h5.css" />
+    <script type="text/javascript" src="./js/axios.min.js"></script>
+    <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+    <style>
+        .alertContainer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            background-color: #ffe58f;
+            width: 100%;
+            text-align: center;
+            color: #ffffff;
+            font-weight: 700;
+            padding: 10px;
+            display: none;
+        }
+
+        .loading {
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            background-color: #007ADD;
+            position: fixed;
+            left: calc(50% - 25px);
+            top: calc(50% - 25px);
+            animation: ball-scale infinite linear 0.75s;
+        }
+
+        @keyframes ball-scale {
+            0% {
+                transform: scale(0.1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+    <!-- 页面加载Loading -->
+    <div id="Loading" class="loading"></div>
+    <!-- 主页面 -->
+    <div id="Main" style="display: none">
+        <div class="main-contant" id="MainContent">
+            <!-- 图片 -->
+            <div class="img-container">
+                <!-- 水印图片 -->
+                <img id="top-icon" src="./images/topIcon.png" alt="" style="display: none">
+                <!-- 产品图片 -->
+                <img id="cover" src="./images/loading.png" alt="">
+            </div>
+            <!-- 产品信息 -->
+            <div class="productcard">
+                <div class="product-title">
+                    基本信息
+                </div>
+                <!-- 根据页面数据数量调整产品信息显示模式 -->
+                <!-- 显示模式1 -->
+                <div class="product-content" id="product-wrap" style="display: none">
+                    <div class="cardinfotitle">
+                        <div class="cardinfotitle-title">品规：</div>
+                        <div class="cardinfotitle-info" id="brandName"></div>
+                    </div>
+                    <div class="cardinfotitle">
+                        <div class="cardinfotitle-title">品规所属企业：</div>
+                        <div class="cardinfotitle-info" id="corpName"></div>
+                    </div>
+
+                    <!-- 卷烟数据显示 -->
+                    <div id="product-wrap-cigarette" style="display: none">
+                        <div class="cardinfotitle">
+                            <div class="cardinfotitle-float" style="width: 55%;">
+                                <div class="cardinfotitle-title">烟气一氧化碳：</div>
+                                <div class="cardinfotitle-info" id="carbonicOxide"></div>
+                            </div>
+                            <div class="cardinfotitle-float" style="width: 45%;">
+                                <div class="cardinfotitle-title">类&nbsp;&nbsp;&nbsp;型：</div>
+                                <div class="cardinfotitle-info" id="typeName"></div>
+                            </div>
+                        </div>
+                        <div class="cardinfotitle">
+                            <div class="cardinfotitle-float" style="width: 55%;">
+                                <div class="cardinfotitle-title">烟气烟碱量：</div>
+                                <div class="cardinfotitle-info" id="alkaliName"></div>
+                            </div>
+                            <div class="cardinfotitle-float" style="width: 45%;">
+                                <div class="cardinfotitle-title">焦油量：</div>
+                                <div class="cardinfotitle-info" id="tarName"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 雪茄烟数据显示 -->
+                    <div id="product-wrap-cigar" style="display: none">
+                        <div class="cardinfotitle">
+                            <div class="cardinfotitle-float" style="width: 50%;">
+                                <div class="cardinfotitle-title">焦油量：</div>
+                                <div class="cardinfotitle-info" id="cigarTarName"></div>
+                            </div>
+                            <div class="cardinfotitle-float" style="width: 50%;">
+                                <div class="cardinfotitle-title">环径：</div>
+                                <div class="cardinfotitle-info" id="cigarRingDiameterName"></div>
+                            </div>
+                        </div>
+                        <div class="cardinfotitle">
+                            <div class="cardinfotitle-float" style="width: 50%;">
+                                <div class="cardinfotitle-title">烟支长度：</div>
+                                <div class="cardinfotitle-info" id="cigarLengthName"></div>
+                            </div>
+                            <div class="cardinfotitle-float" style="width: 50%;">
+                                <div class="cardinfotitle-title">烟支周长：</div>
+                                <div class="cardinfotitle-info" id="cigarPerimeterName"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 显示模式2 -->
+                <div class="product-content-spacing" id="product-wrap-spacing" style="display: none">
+                    <div class="cardinfotitle">
+                        <div class="cardinfotitle-title">品规：</div>
+                        <div class="cardinfotitle-info" id="brandName-spacing"></div>
+                    </div>
+                    <div class="cardinfotitle">
+                        <div class="cardinfotitle-title">品规所属企业：</div>
+                        <div class="cardinfotitle-info" id="corpName-spacing"></div>
+                    </div>
+
+                    <!-- 卷烟数据显示 -->
+                    <div id="product-wrap-spacing-cigarette" style="display: none">
+                        <div class="cardinfotitle">
+                            <div class="cardinfotitle-float" style="width: 55%;">
+                                <div class="cardinfotitle-title">烟气一氧化碳：</div>
+                                <div class="cardinfotitle-info" id="carbonicOxide-spacing"></div>
+                            </div>
+                            <div class="cardinfotitle-float" style="width: 45%;">
+                                <div class="cardinfotitle-title">类&nbsp;&nbsp;&nbsp;型：</div>
+                                <div class="cardinfotitle-info" id="typeName-spacing"></div>
+                            </div>
+                        </div>
+                        <div class="cardinfotitle">
+                            <div class="cardinfotitle-float" style="width: 55%;">
+                                <div class="cardinfotitle-title">烟气烟碱量：</div>
+                                <div class="cardinfotitle-info" id="alkaliName-spacing"></div>
+                            </div>
+                            <div class="cardinfotitle-float" style="width: 45%;">
+                                <div class="cardinfotitle-title">焦油量：</div>
+                                <div class="cardinfotitle-info" id="tarName-spacing"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 雪茄烟数据显示 -->
+                    <div id="product-wrap-spacing-cigar" style="display: none">
+                        <div class="cardinfotitle">
+                            <div class="cardinfotitle-float" style="width: 50%;">
+                                <div class="cardinfotitle-title">焦油量：</div>
+                                <div class="cardinfotitle-info" id="cigarTarName-spacing"></div>
+                            </div>
+                            <div class="cardinfotitle-float" style="width: 50%;">
+                                <div class="cardinfotitle-title">环径：</div>
+                                <div class="cardinfotitle-info" id="cigarRingDiameterName-spacing"></div>
+                            </div>
+                        </div>
+                        <div class="cardinfotitle">
+                            <div class="cardinfotitle-float" style="width: 50%;">
+                                <div class="cardinfotitle-title">烟支长度：</div>
+                                <div class="cardinfotitle-info" id="cigarLengthName-spacing"></div>
+                            </div>
+                            <div class="cardinfotitle-float" style="width: 50%;">
+                                <div class="cardinfotitle-title">烟支周长：</div>
+                                <div class="cardinfotitle-info" id="cigarPerimeterName-spacing"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- 全国市场监管服务热线 -->
+            <div class="productcard">
+                <div class="product-title">
+                    全国市场监管服务热线
+                </div>
+                <div class="normal-content">
+                    <div class="normal-info">
+                        <a href="tel:12313" style="color: #0C7EEA;">12313</a>
+                    </div>
+                </div>
+            </div>
+            <div id="custom-wrap" class="productcard" style="display: none">
+                <div id="custom-title" class="product-title">
+                    企业服务热线
+                </div>
+                <div class="normal-content">
+                    <div class="normal-info">
+                        <a id="custom-content" href="#" style="color: #0C7EEA;">暂无数据</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer" id="enterprise-services" style="display: none">
+            <div class="button" style="display: none">
+                自助购买
+            </div>
+            <div class="button" onclick="jumpToOther()">
+                企业服务
+            </div>
+        </div>
+    </div>
+    <div id="Err" class="errorContainer" style="display: none">
+        <div class="content">
+            <img id="errImage" src="" alt="">
+            <div id="errorMessage" class="scan-error-msg">二维码不存在</div>
+        </div>
+        <div class="footer">
+            <div class="close" onclick="handleOnClose()">
+                关&nbsp;&nbsp;&nbsp;&nbsp;闭
+            </div>
+        </div>
+    </div>
+    <div id="alert" class="alertContainer">
+        企业服务未开通
+    </div>
+    <div id="allmap"></div>
+</div>
+<script type="text/javascript" src="./js/zepto.min.js"></script>
+<script type="text/javascript">
+    const host = ''; // host部署到正式环境需要清空
+    let code = ''; // 二维码
+    let scanType = 0; // 0:浏览器，1：微信，2：支付宝
+    let scanTime = new Date().getTime(); // 扫码时间
+    let specCode = ''; // 规格编码
+    let jumpUrl = ''; // 路由跳转地址
+    let qrcodeResult = null
+    // 当页面ready的时候，执行回调:
+    var image = document.getElementById("errImage");
+
+    Zepto(function ($) {
+        scanQuery().then(function (res) {
+            // 验证是否通过
+            if (res) {
+                // 接口请求是否成功（后端判断）
+                if (res.apiNormal) {
+                    // 校验是否通过, 如果二位码是报废状态提示不存在codeStatus = 3, 二维码中心码是否存在
+                    if (res.codeCheck && res.codeStatus !== 3 && res.codeExists) {
+                        // 产品信息页是否展示
+                        if (res.orgSwitch) {
+                            // 判断该品规是否在页面配置管理进行过配置
+                            if (res.hasPageConfig) {
+                                // 判断是否可以判断雪茄烟还是卷烟
+                                if (res.codeData && res.codeData.meta && (res.codeData.meta.typeCode === 'AC' || res.codeData.meta.typeCode === 'AD')) {
+                                    // 全局打开且企业打开: 显示详情页
+                                    $('#Main').show();
+                                    $('#Err').hide();
+                                    // 是否配置企业服务热线
+                                    if (res.customTitle && res.customContent) {
+                                        // 企业服务热线
+                                        // 获取要更改的链接元素
+                                        var customContentLink = document.getElementById("custom-content");
+                                        // 定义要设置的新的href值
+                                        var newCustomContentLink = "tel:" + (res.customContent || '');
+                                        // 动态设置href属性
+                                        customContentLink.setAttribute("href", newCustomContentLink);
+                                        $("#custom-wrap").show();
+                                    }
+                                    // 配置了路由展示企业服务
+                                    if (res.routeConfig && JSON.stringify(res.routeConfig) !== "{}") {
+                                        $("#enterprise-services").show();
+                                        document.getElementById('MainContent').style.bottom = '80px';
+                                    } else {
+                                        document.getElementById('MainContent').style.bottom = 0;
+                                    }
+                                    // 数据显示项目是否完全
+                                    if ((res.routeConfig && JSON.stringify(res.routeConfig) !== "{}") && (res.customTitle && res.customContent)) {
+                                        $("#product-wrap").show();
+                                        // 区分卷烟和雪茄烟
+                                        if (res.codeData.meta.typeCode === 'AC') {
+                                            $("#product-wrap-cigarette").show();
+                                        } else {
+                                            $("#product-wrap-cigar").show();
+                                        }
+                                    } else {
+                                        $("#product-wrap-spacing").show();
+                                        // 区分卷烟和雪茄烟
+                                        if (res.codeData.meta.typeCode === 'AC') {
+                                            $("#product-wrap-spacing-cigarette").show();
+                                        } else {
+                                            $("#product-wrap-spacing-cigar").show();
+                                        }
+                                    }
+                                    setDom(res);
+                                    $('#Loading').hide()
+                                }
+                            } else {
+                                $('#Loading').show()
+                                $('#Err').hide();
+                            }
+                        } else {
+                            $('#Loading').show()
+                            $('#Err').hide();
+                        }
+                    } else {
+                        $('#Loading').hide()
+                        image.src = "./images/exception/errorlogo.png";
+                        $('#Err').show();
+                        // 验证失败提示'二维码不存在'
+                        $("#errorMessage").html('二维码不存在')
+                    }
+                } else {
+                    $('#Loading').hide();
+                    image.src = "./images/exception/errorlogo.png";
+                    $('#Err').show();
+                    // 验证失败提示'二维码不存在'
+                    $("#errorMessage").html('系统繁忙，请稍后再试')
+
+                }
+            } else {
+                $('#Loading').show()
+                $('#Err').hide();
+            }
+        })
+            .catch(function (err) {
+                $('#Loading').hide();
+                image.src = "./images/exception/errorlogo.png";
+                $('#Err').show();
+                if (err.code === 'ECONNABORTED') {
+                    // 接口访问超时提示'系统繁忙，请稍后再试'
+                    $("#errorMessage").html('系统繁忙，请稍后再试')
+                } else {
+                    // 接口访问失败提示'系统正在升级中，请稍后再试'
+                    $("#errorMessage").html('系统正在升级中，请稍后再试')
+                }
+                console.log('err', err);
+            });
+    });
+    function redirect(_url) {
+        const a = document.createElement('a');
+        a.href = _url;
+        a.click();
+        a.remove()
+    }
+    function Alert(message) {
+        const alertDom = document.querySelector('#alert')
+        alertDom.style.display = 'block'
+        alertDom.innerHTML = message
+        setTimeout(() => {
+            alertDom.style.display = 'none'
+        }, 3000);
+    }
+    function jumpToOther() {
+        scanType = checkBrowser()
+        let config = null;
+        if (qrcodeResult && qrcodeResult.routeConfig && qrcodeResult.routeConfig[scanType]) {
+            config = qrcodeResult.routeConfig[scanType]
+        }
+        console.log('config', config)
+        if (!config) {
+            // Alert('企业服务未开通')
+            return;
+        }
+        let routeParamSpecCode = ''
+        if (qrcodeResult && qrcodeResult.codeData && qrcodeResult.codeData.meta) {
+            routeParamSpecCode = qrcodeResult.codeData.meta.spuCode
+        }
+        const routeParam = 'code=' + code + '&scanType=' + scanType + '&scanTime=' + scanTime + '&specCode=' + routeParamSpecCode;
+
+        const saveRouteLogParams = {}
+        saveRouteLogParams.codeTid = code;
+        saveRouteLogParams.routeParam = routeParam;
+        saveRouteLogParams.routeType = scanType;
+        if (qrcodeResult && qrcodeResult.codeData && qrcodeResult.codeData.meta) {
+            saveRouteLogParams.orgId = qrcodeResult.codeData.meta.ownerId;
+            saveRouteLogParams.orgName = qrcodeResult.codeData.meta.ownerName;
+            saveRouteLogParams.brandId = qrcodeResult.codeData.meta.brandId;
+            saveRouteLogParams.brandName = qrcodeResult.codeData.meta.brandName;
+            saveRouteLogParams.spuId = qrcodeResult.codeData.meta.spuId;
+            saveRouteLogParams.spuName = qrcodeResult.codeData.meta.spuName;
+        } else {
+            saveRouteLogParams.orgId = null;
+            saveRouteLogParams.orgName = null;
+            saveRouteLogParams.brandId = null;
+            saveRouteLogParams.brandName = null;
+            saveRouteLogParams.spuId = null;
+            saveRouteLogParams.spuName = null;
+        }
+        if (config) {
+            saveRouteLogParams.sysId = config.sysId;
+            saveRouteLogParams.sysName = config.sysName;
+            saveRouteLogParams.routeRule = config.routeRule;
+            saveRouteLogParams.routeUrl = config.linkUrl;
+        } else {
+            saveRouteLogParams.sysId = null;
+            saveRouteLogParams.sysName = null;
+            saveRouteLogParams.routeRule = null;
+            saveRouteLogParams.routeUrl = null;
+        }
+
+
+        // 记录跳转日志
+        axios
+            .post(host + '/CigaretteQrcodeQuery/RouteLog/saveRouteLog/v1', saveRouteLogParams)
+            .then(function (res) {
+                if (res && res.data && res.data.success && res.data.data) {
+                    // 数据加密
+                    const dataEncryptionParams = {}
+                    dataEncryptionParams.data = routeParam;
+                    if (config) {
+                        dataEncryptionParams.secretKeyCode = config.secretKeyCode;
+                        dataEncryptionParams.linkUrl = config.linkUrl;
+                    } else {
+                        dataEncryptionParams.secretKeyCode = null;
+                        dataEncryptionParams.linkUrl = null;
+                    }
+                    axios
+                        .post(host + '/CigaretteQrcodeQuery/ScanCodeRouteConfigServiceI/dataEncryption', dataEncryptionParams)
+                        .then(function (res1) {
+                            if (res1 && res1.data && res1.data.success && res1.data.data && res1.data.data.encryptData) {
+                                let url = ''
+                                if (config) {
+                                    url = config.linkUrl + '?arg=' + (res1.data.data.encryptData) + '&timestamp=' + new Date().getTime() + Math.random();
+                                    redirect(url)
+                                }
+                            } else {
+                                let url = ''
+                                if (config) {
+                                    url = config.linkUrl + '?timestamp=' + new Date().getTime() + Math.random();
+                                    redirect(url)
+                                }
+                            }
+                        }).catch(function (err1) {
+                        let url = ''
+                        if (config) {
+                            url = config.linkUrl + '?timestamp=' + new Date().getTime() + Math.random();
+                            redirect(url)
+                        }
+                    });
+                }
+            })
+            .catch(function (err) { });
+    }
+    // 获取经纬度
+    var latitude = null;
+    var longitude = null;
+
+    // 数据请求
+    function scanQuery() {
+        return new Promise(function (resolve, reject) {
+            if (window) {
+                code = window.location.href
+            } else {
+                code = location.href
+            }
+            var clientInfo = navigator.userAgent.toLowerCase();
+            // 设置超时时间
+            const axiosInstance = axios.create({
+                timeout: 30000,
+            });
+
+            axiosInstance
+                .post(host + '/CigaretteQrcodeQuery/CodeQuery/scanCode/v1', {
+                    qrcode: code,
+                    clientInfo,
+                    // latitude: latitude,
+                    // longitude: longitude,
+                    ip: ''
+                })
+                .then(function (res) {
+                    if (res.data.success && res.data.data) {
+                        var data = res.data.data;
+                        resolve(data);
+                    } else {
+                        reject(res.data.message);
+                    }
+                })
+                .catch(function (err) {
+                    reject(err);
+                });
+        });
+    }
+
+    function checkBrowser() {
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') { // 微信
+            return 1
+        } else if (ua.match(/Alipay/i) == "alipay") {   // 支付宝
+            return 2
+        } else { // 浏览器
+            return 0
+        }
+    }
+    function setValue(val, unit) {
+        if (val) {
+            return val + unit
+        } else {
+            return ''
+        }
+    }
+    // 数据加载
+    function setDom(res) {
+        qrcodeResult = res;
+        let meta = {}
+        if (res && res.codeData) {
+            if (res.codeData.meta !== null && res.codeData.meta !== undefined) {
+                meta = res.codeData.meta;
+            }
+        }
+        if (meta) {
+            // 品规所属企业名称
+            $("#corpName").html(meta.ownerName)
+            // 规格名称
+            $("#brandName").html(meta.spuName)
+            // 卷烟数据：
+            // 烟气一氧化碳量
+            $("#carbonicOxide").html(setValue(meta.carbonMonoxide, ' mg'))
+            // 卷烟类型代码
+            $("#typeName").html(meta.cigaretteType)
+            // 卷烟烟气烟碱量
+            $("#alkaliName").html(setValue(meta.nicotine, ' mg'))
+            // 焦油量
+            $("#tarName").html(setValue(meta.tar, ' mg'))
+            // 雪茄烟数据：
+            // 焦油量
+            $("#cigarTarName").html(meta.tar)
+            //环径
+            $("#cigarRingDiameterName").html(meta.ringDiameter)
+            //烟支长度
+            $("#cigarLengthName").html(setValue(meta.length, ' mm'))
+            //烟支周长
+            $("#cigarPerimeterName").html(setValue(meta.perimeter, ' mm'))
+            // 规格名称
+            $("#brandName-spacing").html(meta.spuName)
+            // 品规所属企业名称
+            $("#corpName-spacing").html(meta.ownerName)
+            // 卷烟数据：
+            // 烟气一氧化碳量
+            $("#carbonicOxide-spacing").html(setValue(meta.carbonMonoxide, ' mg'))
+            // 卷烟类型代码
+            $("#typeName-spacing").html(meta.cigaretteType)
+            // 卷烟烟气烟碱量
+            $("#alkaliName-spacing").html(setValue(meta.nicotine, ' mg'))
+            // 卷烟焦油量
+            $("#tarName-spacing").html(setValue(meta.tar, ' mg'))
+            // 雪茄烟数据：
+            //焦油量
+            $("#cigarTarName-spacing").html(meta.tar)
+            //环径
+            $("#cigarRingDiameterName-spacing").html(meta.ringDiameter)
+            //烟支长度
+            $("#cigarLengthName-spacing").html(setValue(meta.length, ' mm'))
+            //烟支周长
+            $("#cigarPerimeterName-spacing").html(setValue(meta.perimeter, ' mm'))
+        } else {
+            $("#corpName").html('')
+            $("#carbonicOxide").html(setValue('', ' mg'))
+            $("#typeName").html('')
+            $("#alkaliName").html(setValue('', ' mg'))
+            $("#tarName").html(setValue('', ' mg'))
+            $("#brandName-spacing").html('')
+            $("#corpName-spacing").html('')
+            $("#carbonicOxide-spacing").html(setValue('', ' mg'))
+            $("#typeName-spacing").html('')
+            $("#alkaliName-spacing").html(setValue('', ' mg'))
+            $("#tarName-spacing").html(setValue('', ' mg'))
+
+            $("#cigarTarName").html('') //焦油量
+            $("#cigarRingDiameterName").html('') //环径
+            $("#cigarLengthName").html(setValue('', ' mm')) //烟支长度
+            $("#cigarPerimeterName").html(setValue('', ' mm'))  //烟支周长
+
+            $("#cigarTarName-spacing").html('') //焦油量
+            $("#cigarRingDiameterName-spacing").html('') //环径
+            $("#cigarLengthName-spacing").html(setValue('', ' mm')) //烟支长度
+            $("#cigarPerimeterName-spacing").html(setValue('', ' mm'))  //烟支周长
+        }
+        $("#custom-title").html('企业服务热线')
+
+        if (res) {
+            if (res.customContent !== null && res.customContent !== undefined) {
+                $("#custom-content").html(res.customContent)
+            } else {
+                $("#custom-content").html('')
+            }
+            if (res.imageUrl !== null && res.imageUrl !== undefined) {
+                $("#cover").attr('src', res.imageUrl)
+            } else {
+                $("#cover").attr('src', './images/topImg.png')
+            }
+        } else {
+            $("#custom-content").html('')
+            $("#cover").attr('src', './images/topImg.png')
+        }
+        $('#top-icon').show();
+    };
+    function handleOnClose() {
+        if (checkBrowser() === 0) {
+            if (navigator.userAgent.indexOf("Firefox") != -1 || navigator.userAgent.indexOf("Chrome") != -1) {
+                window.location.href = "about:blank";
+                window.close();
+            } else {
+                window.opener = null;
+                window.open("", "_self");
+                window.close();
+            }
+        } else if (checkBrowser() === 1) {
+            //针对苹果不能关闭当前页面
+            if (userAgent.indexOf('Android') > -1 || userAgent.indexOf('Linux') > -1) {
+                WeixinJSBridge.call('closeWindow');
+            } else {
+                //针对苹果不能关闭当前页面
+                setTimeout(function () {
+                    WeixinJSBridge.invoke("closeWindow", {}, function (e) { })
+                }, 100)
+            }
+        } else if (checkBrowser() === 2) {
+            if (userAgent.indexOf('Android') > -1 || userAgent.indexOf('Linux') > -1) {
+                AlipayJSBridge.call('closeWindow');
+            } else {
+                //针对苹果不能关闭当前页面
+                setTimeout(function () {
+                    AlipayJSBridge.invoke("closeWindow", {}, function (e) { })
+                }, 100)
+            }
+
+        }
+    }
+</script>
+</body>
+
+</html>

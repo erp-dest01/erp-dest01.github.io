@@ -19,41 +19,41 @@
   <script src="https://cdn.staticfile.org/nprogress/0.2.0/nprogress.min.js"></script>
   <script src="../js/common.js"></script>
   <style>
-      .alertContainer {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          background-color: #ffe58f;
-          width: 100%;
-          text-align: center;
-          color: #ffffff;
-          font-weight: 700;
-          padding: 10px;
-          display: none;
+    .alertContainer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      background-color: #ffe58f;
+      width: 100%;
+      text-align: center;
+      color: #ffffff;
+      font-weight: 700;
+      padding: 10px;
+      display: none;
+    }
+
+    .loading {
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      background-color: #007ADD;
+      position: fixed;
+      left: calc(50% - 25px);
+      top: calc(50% - 25px);
+      animation: ball-scale infinite linear 0.75s;
+    }
+
+    @keyframes ball-scale {
+      0% {
+        transform: scale(0.1);
+        opacity: 1;
       }
 
-      .loading {
-          width: 50px;
-          height: 50px;
-          border-radius: 100%;
-          background-color: #007ADD;
-          position: fixed;
-          left: calc(50% - 25px);
-          top: calc(50% - 25px);
-          animation: ball-scale infinite linear 0.75s;
+      100% {
+        transform: scale(1);
+        opacity: 0;
       }
-
-      @keyframes ball-scale {
-          0% {
-              transform: scale(0.1);
-              opacity: 1;
-          }
-
-          100% {
-              transform: scale(1);
-              opacity: 0;
-          }
-      }
+    }
   </style>
 </head>
 
@@ -283,7 +283,7 @@
     if ((res.routeConfig && JSON.stringify(res.routeConfig) !== "{}") && (res.customTitle && res.customContent)) {
       $("#product-wrap").show();
       // 区分卷烟和雪茄烟
-      if (res.codeData.meta.spuType === 'AC') {
+      if (res.codeData.meta.spuType === 'AC' || res.codeData.meta.typeCode === 'AC') {
         $("#product-wrap-cigarette").show();
       } else {
         $("#product-wrap-cigar").show();
@@ -291,7 +291,7 @@
     } else {
       $("#product-wrap-spacing").show();
       // 区分卷烟和雪茄烟
-      if (res.codeData.meta.spuType === 'AC') {
+      if (res.codeData.meta.spuType === 'AC' || res.codeData.meta.typeCode === 'AC') {
         $("#product-wrap-spacing-cigarette").show();
       } else {
         $("#product-wrap-spacing-cigar").show();
@@ -313,38 +313,38 @@
       isBox = res.codeData.packaging === '0'
     }
 
-    if (meta && meta.品牌 && meta.规格) {
-      $("#brandName").html(meta.规格)
+    if (meta) {
+      $("#brandName").html(meta.规格 || meta.spuName)
     }
 
     if (meta) {
       if (meta.ownerName !== null && meta.ownerName !== undefined) {
         $("#corpName").html(meta.ownerName)
       } else {
-        $("#corpName").html(meta.企业名称)
+        $("#corpName").html(meta.企业名称 || meta.ownerName)
       }
-      $("#carbonicOxide").html(setValue(meta.烟气一氧化碳量, ' mg'))
-      $("#typeName").html(meta.卷烟类型代码)
-      $("#alkaliName").html(setValue(meta.卷烟烟气烟碱量, ' mg'))
-      $("#tarName").html(setValue(meta.卷烟焦油量, ' mg'))
+      $("#carbonicOxide").html(setValue(meta.烟气一氧化碳量 || meta.carbonMonoxide, ' mg'))
+      $("#typeName").html(meta.卷烟类型代码 || meta.cigaretteType)
+      $("#alkaliName").html(setValue(meta.卷烟烟气烟碱量 || meta.nicotine, ' mg'))
+      $("#tarName").html(setValue(meta.卷烟焦油量 || meta.tar, ' mg'))
 
-      $("#cigarTarName").html(meta.卷烟焦油量) //焦油量
+      $("#cigarTarName").html(meta.卷烟焦油量 || meta.tar) //焦油量
       $("#cigarRingDiameterName").html(meta.ringDiameter) //环径
       $("#cigarLengthName").html(setValue(meta.length, ' mm')) //烟支长度
       $("#cigarPerimeterName").html(setValue(meta.perimeter, ' mm'))  //烟支周长
 
-      $("#brandName-spacing").html(meta.规格)
+      $("#brandName-spacing").html(meta.规格 || meta.spuName)
       if (meta.ownerName !== null && meta.ownerName !== undefined) {
         $("#corpName-spacing").html(meta.ownerName)
       } else {
-        $("#corpName-spacing").html(meta.企业名称)
+        $("#corpName-spacing").html(meta.企业名称 || meta.ownerName)
       }
-      $("#carbonicOxide-spacing").html(setValue(meta.烟气一氧化碳量, ' mg'))
-      $("#typeName-spacing").html(meta.卷烟类型代码)
-      $("#alkaliName-spacing").html(setValue(meta.卷烟烟气烟碱量, ' mg'))
-      $("#tarName-spacing").html(setValue(meta.卷烟焦油量, ' mg'))
+      $("#carbonicOxide-spacing").html(setValue(meta.烟气一氧化碳量 || meta.carbonMonoxide, ' mg'))
+      $("#typeName-spacing").html(meta.卷烟类型代码 || meta.cigaretteType)
+      $("#alkaliName-spacing").html(setValue(meta.卷烟烟气烟碱量 || meta.nicotine, ' mg'))
+      $("#tarName-spacing").html(setValue(meta.卷烟焦油量 || meta.tar, ' mg'))
 
-      $("#cigarTarName-spacing").html(meta.卷烟焦油量) //焦油量
+      $("#cigarTarName-spacing").html(meta.卷烟焦油量 || meta.tar) //焦油量
       $("#cigarRingDiameterName-spacing").html(meta.ringDiameter) //环径
       $("#cigarLengthName-spacing").html(setValue(meta.length, ' mm')) //烟支长度
       $("#cigarPerimeterName-spacing").html(setValue(meta.perimeter, ' mm'))  //烟支周长

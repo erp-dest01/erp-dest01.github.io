@@ -1,0 +1,70 @@
+{
+  "apiNormal": true,
+  "codeExists": true,
+  "codeFlow": null,
+  "codeActives": null,
+  "codeStatus": 1,
+  "message": null,
+  "codeData": {
+    "packaging": "2",
+    "codeLevel": 2,
+    "meta": {
+      "cigaretteType": "烤烟型",
+      "useAcPageConfig": null,
+      "brandName": "黄金叶",
+      "nicotine": "1.0",
+      "spuName": "黄金叶(天叶)",
+      "tar": "11",
+      "ownerCode": "20410001",
+      "carbonMonoxide": "11",
+      "typeCode": "AC",
+      "ownerName": "河南中烟工业有限责任公司",
+      "scanPageConfigVersion": 1,
+      "brandId": "ecdb76f99bc848b7abd67207d68aac7c",
+      "spuCode": "AC016999",
+      "spuId": "16e5b0b7e4dc43208b7a77b42c4b6b64",
+      "brandCode": "0538"
+    },
+    "relationInfo": {
+      "brandName": "黄金叶",
+      "specCode": "AC016999",
+      "operator": "系统管理员",
+      "typeCode": "AC",
+      "prodSiteName": "黄金叶生产制造中心",
+      "prodOrgName": "河南中烟工业有限责任公司",
+      "produceDate": "2024-01-01",
+      "flowNodeCode": "AC_R_001",
+      "specName": "黄金叶(天叶)",
+      "prodOrgId": "1001220126000103299",
+      "prodSiteId": "1001220126000103302",
+      "brandId": "ecdb76f99bc848b7abd67207d68aac7c",
+      "packageRatio": "1件:25条:250盒",
+      "spuId": "16e5b0b7e4dc43208b7a77b42c4b6b64",
+      "prodOrgCode": "20410001",
+      "brandCode": "0538",
+      "prodSiteCode": "12410103"
+    },
+    "scanLogs": null
+  },
+  "codeCheck": true,
+  "isPageTop": true,
+  "hasPageConfig": true,
+  "errorCode": null,
+  "errorMessage": null,
+  "imageUrl": "/y2wm/images/黄金叶(天叶)_cover.png",
+  "customTitle": "企业服务热线",
+  "customContent": "400-6211316",
+  "routeConfig": {
+    "1": {
+      "secretKeyCode": "jr9rjBHAc",
+      "linkUrl": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx5ba78a8ba59462c6&redirect_uri=https%3A%2F%2Fjinyeyuan.hatic.com%2Fiplus-mobile%2F%23%2Fcigarette-verify%3Fqrcode%3Dhttps%253A%252F%252Fy2wm.cn%252F99.1000.1%252FAC2016996003UID597P0FH091UY5AOB6J%26specCode%3DAC016999%26applyTime%3D1713685351599&response_type=code&scope=snsapi_userinfo&state=&connect_redirect=1",
+      "routeRule": "0",
+      "sysId": "699e298e84dd4ea0ade687e39546703f",
+      "sysName": "河南中烟互联网营销平台"
+    }
+  },
+  "isShowProductInfoPage": false,
+  "orgSwitch": true,
+  "errcode": false,
+  "requestId": "1781946779944435714"
+}

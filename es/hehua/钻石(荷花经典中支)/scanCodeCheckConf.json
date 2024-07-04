@@ -1,0 +1,25 @@
+{
+  "actPopTips": {
+    "id": 90,
+    "orgId": "hebeihehua",
+    "propKey": "act_pop_tips",
+    "propValue": "1",
+    "status": 1
+  },
+  "scanCodePage": {
+    "id": 33,
+    "flag": 2,
+    "type": "SCMB-002",
+    "icon": null,
+    "name": "细支荷花盒扫码落地页",
+    "note": "",
+    "conf": "{\"loading\":{\"flag\":1,\"bg\":\"/es/hehua/img/951ED52D562A4CB284BF423DAF896C3B.png\",\"color\":\"#AB784C\"},\"has\":{\"title\":{\"name\":\"荷花\",\"note\":\"\"},\"yz\":{\"botFlag\":1,\"botImg\":\"/es/hehua/img/A574ADD088AE4AF6B281256D0D84FCA4.jpg\",\"detailFlag\":true,\"color\":\"#AB784C\",\"productImgBig\":\"\",\"productImg\":\"/es/hehua/img/钻石(细支荷花).jpg\",\"note\":\"本页面产品信息，未满十八周岁请勿访问\",\"feedbackFlag\":1,\"feedbackImg\":\"/es/hehua/img/4DF24C370AED4D078EDD98DAF926F1C3.png\"}}}",
+    "pubUrl": "/es/hehua/img/B1816F631AD24964B51F8953D55A3BC9.json",
+    "preUrl": "/es/hehua/img/B1816F631AD24964B51F8953D55A3BC9.json",
+    "orgId": "hebeihehua",
+    "sn": "1111111111135,",
+    "status": 1,
+    "creator": "hehua_liusha",
+    "modifier": "hehua_caozhengli"
+  }
+}
