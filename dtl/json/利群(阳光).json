@@ -1,0 +1,70 @@
+{
+  "apiNormal": true,
+  "codeExists": true,
+  "codeFlow": null,
+  "codeActives": null,
+  "codeStatus": 1,
+  "message": null,
+  "codeData": {
+    "packaging": "2",
+    "codeLevel": 2,
+    "meta": {
+      "cigaretteType": "烤烟型",
+      "useAcPageConfig": null,
+      "brandName": "利群",
+      "nicotine": "0.8",
+      "spuName": "利群(阳光)",
+      "tar": "8",
+      "ownerCode": "20330001",
+      "carbonMonoxide": "10",
+      "typeCode": "AC",
+      "ownerName": "浙江中烟工业有限责任公司",
+      "scanPageConfigVersion": 1,
+      "brandId": "bbca0335003146b4ab4414201f798e53",
+      "spuCode": "AC011733",
+      "spuId": "1699576ebb8a47cd9e3eb2b592806686",
+      "brandCode": "0715"
+    },
+    "relationInfo": {
+      "brandName": "利群",
+      "specCode": "AC011733",
+      "operator": "CG1100191233010101",
+      "typeCode": "AC",
+      "prodSiteName": "杭州卷烟厂",
+      "prodOrgName": "浙江中烟工业有限责任公司",
+      "produceDate": "2024-02-27",
+      "flowNodeCode": "AC_R_001",
+      "specName": "利群(阳光)",
+      "prodOrgId": "1001220126000103266",
+      "prodSiteId": "1001220126000103267",
+      "brandId": "bbca0335003146b4ab4414201f798e53",
+      "packageRatio": "1:50:500",
+      "spuId": "1699576ebb8a47cd9e3eb2b592806686",
+      "prodOrgCode": "20330001",
+      "brandCode": "AC011733",
+      "prodSiteCode": "12330101"
+    },
+    "scanLogs": null
+  },
+  "codeCheck": true,
+  "isPageTop": true,
+  "hasPageConfig": true,
+  "errorCode": null,
+  "errorMessage": null,
+  "imageUrl": "/dtl/images/利群(阳光)_cover.jpg",
+  "customTitle": "企业服务热线",
+  "customContent": "4008571056",
+  "routeConfig": {
+    "1": {
+      "secretKeyCode": "ijgyhN6szD",
+      "linkUrl": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx9277678c5cb30d2c&redirect_uri=https%3A%2F%2Fliqunchina.com%2Ffront%2Fweixin-act-scan%2F%3Flocation%3D1%26qrCode%3DAC1011881003R8MN1TNC60FWWYQMSEHY0%26tobaCode%3DAC1011881%26tobaId%3D1635000716395226983&response_type=code&scope=snsapi_userinfo&connect_redirect=1",
+      "routeRule": "0",
+      "sysId": "c80a9b8f79cb47c3842b7bccc96fa563",
+      "sysName": "浙江中烟企业二维码管理系统"
+    }
+  },
+  "isShowProductInfoPage": false,
+  "orgSwitch": true,
+  "errcode": false,
+  "requestId": "1788811463693139970"
+}
